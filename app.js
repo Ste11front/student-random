@@ -1,3 +1,10 @@
+// 1) creare classe student con toString
+// 2) creare classe classroom che contiene un array di students
+// 3) aggiungere a classroom tre metodi:
+//      -addStudent()
+//      -randomizeStudents()
+//      -printSquads()
+
 const s1 = new Student("manuela", "ariotti");
 const s2 = new Student("damiano", "di lionardo");
 const s3 = new Student("cesare", "falzone");

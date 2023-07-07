@@ -1,40 +1,110 @@
-const s1 = new Student("manuela", "ariotti");
-const s2 = new Student("damiano", "di lionardo");
-const s3 = new Student("cesare", "falzone");
-const s4 = new Student("luca", "verduci");
-const s5 = new Student("isabella", "ottonello");
-const s6 = new Student("stefania", "ghergut");
-const s7 = new Student("ares", "fiumicelli");
-const s8 = new Student("francesca", "ercolani");
-const s9 = new Student("stefano", "florio");
-const s10 = new Student("bryan", "rojas");
+const s1 = new Student('Ares', 'Fiumicelli', '1993', 'Are');
+const s2 = new Student('Isabella', 'Ottonello', '1996', 'Isa');
+const s3 = new Student('Francesca', 'Ercolani', '1989', 'Fra');
+const s4 = new Student('Stefania', 'Ghergut', '1996', 'Stef');
+const s5 = new Student('Manuela', 'Ariotti', '1988', 'Manu');
+const s6 = new Student('Stefano', 'Florio', '1998', 'Ste');
+const s7 = new Student('Luca', 'Verduci', '1999', 'Lu');
+const s8 = new Student('Bryan', 'Rojas', '1994', 'Bry');
+const s9 = new Student('Damiano', 'Di Lionardo', '1993', 'Dami');
+const s10 = new Student('Cesare', 'Falzone', '2003', 'Cesa');
 
-console.log(s1.toString());
 
-const class1 = new Classroom([s1,s2,s3,s4,s5,s6,s7,s8,s9,s10]);
+const class1 = new Classroom([s1, s2, s3, s4, s5, s6, s7, s8, s9, s10]);
 
-//console.log(document);
 
-//console.log(document.getElementById('main-container'));
+// console.log(document);
+
+// console.log(document.getElementById('main-container'))
+
 
 // const mainContainer = document.getElementById('main-container');
 
 // const h2Element = document.createElement('h2');
 
-// const textNode = document.createTextNode(s1.toString());
+// const textNode = document.createTextNode('pippo de pippis');
 
-// mainContainer.appendChild(textNode);
+// h2Element.appendChild(textNode);
 
 // mainContainer.appendChild(h2Element);
 
-function renderPage() {
+
+function renderPage(){
+
     const mainContainer = document.getElementById('main-container');
-    for (const student of class1.studentsArray[i]) {
-        const h2Element = document.createElement('h2');
-        const textNode = document.createTextNode(student.toString());
-        h2Element.appendChild(textNode);
-        mainContainer.appendChild(h2Element);
+
+    mainContainer.innerHTML = '';
+
+    
+    ///for
+    //1) creo un div per la card
+    //2) creo lo span del nome
+    //3) creo il node del nome
+    //4) metto il node del nome dentro lo span del nome
+    //5) metto lo span del nome dentro al div
+    //6) creo lo span del cognome
+    ///...
+
+    for (let i = 0; i < class1.studentsArray.length; i++) {
+
+        if(i % 2 === 0){
+            const h3Element = document.createElement('h3');
+
+            const node = document.createTextNode('Squadra ' + (i/2+1) + ': ');
+
+            h3Element.appendChild(node);
+
+            mainContainer.appendChild(h3Element);
+        }
+
+        const student = class1.studentsArray[i]
+        
+        const divElement = document.createElement('div');
+
+        divElement.classList.add('student-div')
+
+        const spanName = document.createElement('span');
+
+        const textNodeName = document.createTextNode(student.toStringName());
+
+        spanName.appendChild(textNodeName);
+
+        divElement.appendChild(spanName);
+
+        const spanSurname = document.createElement('span');
+
+        const textNodeSurname = document.createTextNode(student.toStringSurname());
+
+        spanSurname.appendChild(textNodeSurname); 
+
+        divElement.appendChild(spanSurname);
+
+        const spanYob = document.createElement('span');
+
+        const textNodeYob = document.createTextNode(student.toStringYob());
+
+        spanYob.appendChild(textNodeYob);
+
+        divElement.appendChild(spanYob);
+
+        const spanNickname = document.createElement('span');
+
+        const textNodeNickname = document.createTextNode(student.toStringNickname());
+
+        spanNickname.appendChild(textNodeNickname);
+
+        divElement.appendChild(spanNickname);
+
+        mainContainer.appendChild(divElement);
     }
+
 }
 
-// card
+renderPage();
+
+
+function shuffle(){
+    console.log('sto rimescolando');
+    class1.shuffleStudents();
+    renderPage();
+}
