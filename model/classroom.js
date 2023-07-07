@@ -10,6 +10,7 @@ class Classroom {
         const j = Math.floor(Math.random() * (i + 1));
         [this.students[i], this.students[j]] = [this.students[j], this.students[i]];
       }
+      return this.students;
     }
     printSquads() {
         let squadNumber = 1;
@@ -20,4 +21,4 @@ class Classroom {
         }
         return result;
     }
-}  
+}
