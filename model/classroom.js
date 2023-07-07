@@ -1,24 +1,45 @@
 class Classroom {
-    constructor() {
-      this.students = [];
-    }
-    addStudent(student) {
-      this.students.push(student);
-    }
-    randomizeStudents() {
-      for (let i = this.students.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [this.students[i], this.students[j]] = [this.students[j], this.students[i]];
+
+  constructor(studentsArray = []) {
+      this.studentsArray = studentsArray;
+  }
+
+  addStudent(student){
+      this.studentsArray.push(student);
+  }
+
+  getSquads(members){
+      let acc = '';
+      for (let i = 0; i < this.studentsArray.length; i++) {
+          const student = this.studentsArray[i];
+          if (i % members === 0) {
+              acc += 'Squadra '+ (i/members+1) + ': ';
+          }
+          acc += student.toString();
+          if (i % members === members-1) {
+              acc += '\n';
+          }
+          else {
+              acc += ' e ';
+          }
+
+          
       }
-      return this.students;
-    }
-    printSquads() {
-        let squadNumber = 1;
-        let result = '';
-        for (let i = 0; i < this.students.length; i += 2) {
-          result += `Squadra ${squadNumber}: ${this.students[i]} e ${this.students[i + 1]}\n`;
-          squadNumber++;
-        }
-        return result;
-    }
+      return acc;
+  }
+
+  shuffleStudents(){
+      const tempArray = [];
+      const originalLength = this.studentsArray.length;
+      for (let i = 0; i < originalLength; i++) {
+          
+          const randomIndex = Math.floor(Math.random()*this.studentsArray.length);
+          const student = this.studentsArray[randomIndex];
+          tempArray.push(student);
+          this.studentsArray.splice(randomIndex,1);
+          
+      }
+      this.studentsArray=tempArray;
+  }
+
 }

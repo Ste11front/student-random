@@ -1,8 +1,12 @@
-class Student {
-  constructor(name) {
-    this.name = name;
+class Student{
+
+  constructor(name, surname){
+      this.name = name;
+      this.surname = surname;
   }
-  toString() {
-    return this.name;
+
+  toString(){
+      return this.name + ' ' + this.surname;
   }
-}  
+
+}

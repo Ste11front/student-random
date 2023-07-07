@@ -1,27 +1,18 @@
-const manuela = new Student('Manuela');
-const damiano = new Student('Damiano');
-const cesare = new Student('Cesare');
-const luca = new Student('Luca');
-const stefano = new Student('Stefano');
-const bryan = new Student('Bryan');
-const francesca = new Student('Francesca');
-const isabella = new Student('Isabella');
-const stefania = new Student('Stefania');
-const ares = new Student('Ares');
+const s1 = new Student("manuela", "ariotti");
+const s2 = new Student("damiano", "di lionardo");
+const s3 = new Student("cesare", "falzone");
+const s4 = new Student("luca", "verduci");
+const s5 = new Student("isabella", "ottonello");
+const s6 = new Student("stefania", "ghergut");
+const s7 = new Student("ares", "fiumicelli");
+const s8 = new Student("francesca", "ercolani");
+const s9 = new Student("stefano", "florio");
+const s10 = new Student("bryan", "rojas");
 
-const classroom = new Classroom();
-classroom.addStudent(manuela);
-classroom.addStudent(damiano);
-classroom.addStudent(cesare);
-classroom.addStudent(luca);
-classroom.addStudent(stefano);
-classroom.addStudent(bryan);
-classroom.addStudent(francesca);
-classroom.addStudent(isabella);
-classroom.addStudent(stefania);
-classroom.addStudent(ares);
+console.log(s1.toString());
 
-classroom.randomizeStudents();
-classroom.printSquads();
+const class1 = new Classroom([s1,s2,s3,s4,s5,s6,s7,s8,s9,s10]);
 
-console.log(classroom.printSquads());
+class1.shuffleStudents()
+
+console.log(class1.getSquads(2));
